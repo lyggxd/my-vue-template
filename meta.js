@@ -18,6 +18,7 @@ module.exports = {
     // When running tests for the template, this adds answers for the selected scenario
     before: addTestAnswers
   },
+  // 自定义的 Handlebars 辅助函数
   helpers: {
     if_or(v1, v2, options) {
 
@@ -31,7 +32,7 @@ module.exports = {
       return templateVersion
     },
   },
-  
+  // 收集用户自定义数据
   prompts: {
     name: {
       when: 'isNotTest',
@@ -156,7 +157,14 @@ module.exports = {
         },
       ],
     },
+    // vuex: 是否使用 vuex
+    vuex: {
+      when: 'isNotTest',
+      type: 'confirm',
+      message: 'Install vuex?'
+    }
   },
+  // 根据条件过滤文件
   filters: {
     '.eslintrc.js': 'lint',
     '.eslintignore': 'lint',
@@ -170,7 +178,10 @@ module.exports = {
     'test/unit/setup.js': "unit && runner === 'jest'",
     'test/e2e/**/*': 'e2e',
     'src/router/**/*': 'router',
+    // vuex: 如果使用 vuex，把样板代码中的'src/store/**/*'添加至项目
+    'src/store/**/*': 'vuex',
   },
+  // 模板完成后的回调函数
   complete: function(data, { chalk }) {
     const green = chalk.green
 

@@ -7,6 +7,12 @@ import App from './App'
 {{#router}}
 import router from './router'
 {{/router}}
+// vuex: 如果使用 vuex，引入这些文件
+{{#vuex}}
+import Vuex from 'vuex'
+import store from './store'
+Vue.use(Vuex)
+{{/vuex}}
 
 Vue.config.productionTip = false
 
@@ -16,6 +22,10 @@ new Vue({
   {{#router}}
   router,
   {{/router}}
+  // vuex: 如果使用 vuex，引入 store
+  {{#vuex}}
+  store,
+  {{/vuex}}
   {{#if_eq build "runtime"}}
   render: h => h(App)
   {{/if_eq}}
