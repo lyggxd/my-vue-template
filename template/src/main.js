@@ -24,7 +24,7 @@ new Vue({
   {{/router}}
   // vuex: 如果使用 vuex，引入 store
   {{#vuex}}
-  store,
+  store: new Vuex.Store(store),
   {{/vuex}}
   {{#if_eq build "runtime"}}
   render: h => h(App)

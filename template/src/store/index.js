@@ -1,7 +1,5 @@
-import Vuex from 'vuex';
-
-export default new Vuex.Store({
+export default {
     modules: {},
     strict: true,
     plugins: [],
-})
+}
